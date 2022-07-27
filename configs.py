@@ -3,16 +3,19 @@ import os
 import logging
 import datetime
 
+from dotenv import load_dotenv
+
+load_dotenv()
 formatter = '[%(asctime)s] %(levelname)8s --- %(message)s (%(filename)s:%(lineno)s)'
 logging.basicConfig(
-    filename=f'bot-from-{datetime.datetime.now().date()}.log',
+    filename=f'logs/bot-from-{datetime.datetime.now().date()}.log',
     filemode='w',
     format=formatter,
     datefmt='%Y-%m-%d %H:%M:%S',
     level=logging.WARNING
 )
 
-TOKEN = "1803316826:AAH6Z3f4EuUJyKCVZ_asWyYg63p6m94ka34"
+TOKEN = os.getenv('BOT_TOKEN')
 
 
 def get_user_id(message: telebot.types.Message) -> str:
