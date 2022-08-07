@@ -1,6 +1,8 @@
 import logging
 import time
 import telebot
+import configs
+
 from aiogram.utils import executor
 from aiogram.utils.executor import start_webhook
 
@@ -10,7 +12,7 @@ from aiogram.types import (InlineKeyboardMarkup,
                            CallbackQuery,
                            InputMediaPhoto,
                            ReplyKeyboardMarkup)
-import configs
+
 from configs import TOKEN
 import sqlite3
 
