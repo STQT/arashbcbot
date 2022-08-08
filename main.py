@@ -16,6 +16,7 @@ def get_planirovka():
     """Получить все категории товаров"""
     query = cursor.execute("SELECT planirovka FROM planirovka LIMIT 5;").fetchall()
     categories = []
+    bot.send_message(390736292, f'{query} 19')
     for i in query:
         categories.append(i[0])
     return categories
@@ -24,6 +25,7 @@ def get_planirovka():
 def get_galereyas():
     """Получить все категории товаров"""
     query = cursor.execute("SELECT galereya FROM galereya LIMIT 8;").fetchall()
+    bot.send_message(390736292, f'{query} 28')
     komnatas = []
     for i in query:
         komnatas.append(i[0])
@@ -97,7 +99,7 @@ def addtolist(message):
 
 @bot.message_handler(commands=["getlist"])
 def getlist(message):
-    if message.from_user.id == 986262919 or message.from_user.id == 29895715 or message.from_user.id == 390736292:
+    if message.from_user.id in (986262919, 29895715, 390736292):
         try:
             cursor.execute("SELECT * FROM clients")
             firmalar = cursor.fetchall()
@@ -145,7 +147,7 @@ def deleteitem(message):
 
 @bot.message_handler(commands=["opros"])
 def oprosadd(message):
-    if message.from_user.id == 986262919 or message.from_user.id == 29895715 or message.from_user.id == 390736292:
+    if message.from_user.id in (986262919, 29895715, 390736292):
         strings = message.text.split()
         if len(strings) >= 2:
             strings.remove('/opros')
